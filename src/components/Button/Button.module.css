@@ -1,0 +1,51 @@
+.Button {
+  width: 148px;
+  height: 35px;
+  border-radius: 5px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.primary {
+  background-color: var(--primary);
+  color: var(--white);
+  border: 1px solid var(--white);
+}
+
+.primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.outline {
+  border: 1px solid var(--grey-light);
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.outline:hover {
+  background-color: var(--primary);
+  color: var(--white);
+  border: 1px solid var(--white);
+}
+
+.arrow {
+  margin-left: 10px;
+  transition: 0.2s;
+}
+
+.arrow path {
+  fill: var(--black);
+  transition: 0.2s;
+}
+
+.primary path,
+.outline:hover path {
+  fill: var(--white);
+}
+
+.down {
+  transform: rotate(90deg);
+}
