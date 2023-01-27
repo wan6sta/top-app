@@ -1,3 +1,9 @@
+import { Htag } from '@/components'
+
 export default function Home() {
-  return <main>123</main>
+  return (
+    <main>
+      <Htag tag='h1'>Hello world!</Htag>
+    </main>
+  )
 }

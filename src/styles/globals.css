@@ -1,3 +1,12 @@
+:root {
+  --black: #3B434E;
+  --white: #fff;
+  --primary: #7653FC;
+  --red: #FC836D;
+  --green: #1DC37E;
+  --green-light: #C8F8E4;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -8,6 +17,8 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  color: var(--black);
+  background-color:  #F5F6F8;
   font-family: 'Noto Sans', sans-serif;
 }
 
