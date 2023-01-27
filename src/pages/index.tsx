@@ -1,4 +1,4 @@
-import { Button, Htag, P, Tag } from '@/components'
+import { Button, Htag, P, Star, Tag } from '@/components'
 
 export default function Home() {
   return (
@@ -54,6 +54,8 @@ export default function Home() {
       <Tag mode='outline' size='m' href='https://www.google.com/'>
         google
       </Tag>
+      <br />
+      <Star />
     </main>
   )
 }

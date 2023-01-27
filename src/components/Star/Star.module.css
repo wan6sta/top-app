@@ -1,0 +1,13 @@
+.Star {
+
+}
+
+.Star > * {
+  display: inline-block;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.Star > *:last-child {
+  margin-right: 0;
+}
