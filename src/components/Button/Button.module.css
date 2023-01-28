@@ -12,7 +12,7 @@
 .primary {
   background-color: var(--primary);
   color: var(--white);
-  border: 1px solid var(--white);
+  border: 1px solid var(--primary);
 }
 
 .primary:hover {
@@ -28,7 +28,7 @@
 .outline:hover {
   background-color: var(--primary);
   color: var(--white);
-  border: 1px solid var(--white);
+  border: 1px solid var(--primary);
 }
 
 .arrow {

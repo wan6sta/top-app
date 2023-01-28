@@ -1,11 +1,12 @@
 import { Button, Htag, P, Star, Tag } from '@/components'
 import { useState } from 'react'
+import { withLayout } from '@/layout/Layout'
 
-export default function Home() {
+function Home() {
   const [stars, setStars] = useState(4)
 
   return (
-    <main>
+    <>
       <Htag tag='h1'>Hello world!</Htag>
       <br />
       <Button arrow='right'>Primary</Button>
@@ -61,6 +62,8 @@ export default function Home() {
       {/*<Star rating={4} />*/}
       <Star rating={stars} isEditable setRating={setStars} />
       {/*<StarOld rating={stars} isEditable setRating={setStars} />*/}
-    </main>
+    </>
   )
 }
+
+export default withLayout(Home)
