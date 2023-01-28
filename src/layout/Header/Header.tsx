@@ -6,5 +6,5 @@ interface HeaderProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const Header: FC<HeaderProps> = memo(props => {
   const { className, ...rest } = props
-  return <div className={cn(cls.Header, className)} {...rest}></div>
+  return <header className={cn(cls.Header, className)} {...rest}></header>
 })

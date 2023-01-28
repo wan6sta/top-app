@@ -1,0 +1,85 @@
+.Footer {
+  display: grid;
+  justify-content: stretch;
+  justify-items: stretch;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "date date links";
+  color: var(--white);
+  background-color: var(--primary);
+}
+
+.date {
+  display: grid;
+  align-items: center;
+  padding: 0 32px;
+  grid-area: date;
+  transition: 0.2s;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  column-gap: 40px;
+  grid-area: links;
+  padding: 0 32px;
+}
+
+.link {
+  position: relative;
+  align-items: center;
+  padding: 5px 10px;
+  transition: 0.2s;
+}
+
+.link:after {
+  position: absolute;
+  content: '';
+  height: 2px;
+  background-color: var(--white);
+
+  transition: 0.2s;
+  opacity: 0;
+  bottom: 5px;
+  width: 0;
+  left: 50%;
+  transform: translateY(-50%);
+}
+
+.link:hover:after {
+  opacity: 1;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  transform: translateY(0);
+}
+
+@media screen and (max-width: 1030px) {
+  .Footer {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "date"
+        "links";
+    height: 100px;
+  }
+
+  .date {
+    justify-content: center;
+    padding: 0 10px;
+    font-size: 14px;
+  }
+
+  .links {
+    justify-content: center;
+    column-gap: 10px;
+    padding: 0;
+    font-size: 14px;
+  }
+
+  .link:after {
+    height: 1px;
+  }
+}

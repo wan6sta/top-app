@@ -6,5 +6,5 @@ interface SidebarProps extends HTMLAttributes<HTMLDivElement> {}
 
 export const Sidebar: FC<SidebarProps> = memo(props => {
   const { className, ...rest } = props
-  return <div className={cn(cls.Sidebar, className)} {...rest}></div>
+  return <aside className={cn(cls.Sidebar, className)} {...rest}></aside>
 })
