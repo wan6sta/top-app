@@ -1,12 +1,12 @@
 import cls from './P.module.css'
-import { FC, HTMLAttributes, PropsWithChildren } from 'react'
+import { FC, HTMLAttributes, memo, PropsWithChildren } from 'react'
 import cn from 'classnames'
 
 interface PProps extends HTMLAttributes<HTMLParagraphElement> {
   size?: 's' | 'm' | 'l'
 }
 
-export const P: FC<PropsWithChildren<PProps>> = props => {
+export const P: FC<PropsWithChildren<PProps>> = memo(props => {
   const { size = 'm', className, children, ...rest } = props
 
   return (
@@ -14,4 +14,4 @@ export const P: FC<PropsWithChildren<PProps>> = props => {
       {children}
     </p>
   )
-}
+})

@@ -1,11 +1,11 @@
 import cls from './Htag.module.css'
-import { FC, PropsWithChildren } from 'react'
+import { FC, memo, PropsWithChildren } from 'react'
 
 interface HtagProps {
   tag: 'h1' | 'h2' | 'h3'
 }
 
-export const Htag: FC<PropsWithChildren<HtagProps>> = props => {
+export const Htag: FC<PropsWithChildren<HtagProps>> = memo(props => {
   const { tag, children } = props
 
   switch (tag) {
@@ -19,4 +19,4 @@ export const Htag: FC<PropsWithChildren<HtagProps>> = props => {
       const _: never = tag
       return null
   }
-}
+})

@@ -1,6 +1,9 @@
 import { Button, Htag, P, Star, Tag } from '@/components'
+import { useState } from 'react'
 
 export default function Home() {
+  const [stars, setStars] = useState(4)
+
   return (
     <main>
       <Htag tag='h1'>Hello world!</Htag>
@@ -55,7 +58,9 @@ export default function Home() {
         google
       </Tag>
       <br />
-      <Star />
+      {/*<Star rating={4} />*/}
+      <Star rating={stars} isEditable setRating={setStars} />
+      {/*<StarOld rating={stars} isEditable setRating={setStars} />*/}
     </main>
   )
 }

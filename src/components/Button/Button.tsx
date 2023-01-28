@@ -1,5 +1,5 @@
 import cls from './Button.module.css'
-import { ButtonHTMLAttributes, FC, PropsWithChildren } from 'react'
+import { ButtonHTMLAttributes, FC, memo, PropsWithChildren } from 'react'
 import cn from 'classnames'
 import ArrowIcon from './arrow.svg'
 
@@ -8,7 +8,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   arrow?: 'right' | 'down' | 'none'
 }
 
-export const Button: FC<PropsWithChildren<ButtonProps>> = props => {
+export const Button: FC<PropsWithChildren<ButtonProps>> = memo(props => {
   const {
     mode = 'primary',
     children,
@@ -25,4 +25,4 @@ export const Button: FC<PropsWithChildren<ButtonProps>> = props => {
       ) : null}
     </button>
   )
-}
+})

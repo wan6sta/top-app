@@ -1,5 +1,5 @@
 import cls from './Tag.module.css'
-import { FC, PropsWithChildren } from 'react'
+import { FC, memo, PropsWithChildren } from 'react'
 import cn from 'classnames'
 
 interface TagProps {
@@ -8,7 +8,7 @@ interface TagProps {
   href?: string
 }
 
-export const Tag: FC<PropsWithChildren<TagProps>> = props => {
+export const Tag: FC<PropsWithChildren<TagProps>> = memo(props => {
   const { mode = 'primary', size = 's', href, children } = props
 
   if (href) {
@@ -24,4 +24,4 @@ export const Tag: FC<PropsWithChildren<TagProps>> = props => {
   }
 
   return <div className={cn(cls.Tag, cls[mode], cls[size])}>{children}</div>
-}
+})

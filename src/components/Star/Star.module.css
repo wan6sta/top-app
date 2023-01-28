@@ -1,13 +1,20 @@
 .Star {
-
-}
-
-.Star > * {
   display: inline-block;
-  cursor: pointer;
-  margin-right: 5px;
 }
 
-.Star > *:last-child {
-  margin-right: 0;
+.starIcon {
+  display: inline-block;
+  padding: 2.5px;
+}
+
+.starIcon path {
+  transition: 0.2s;
+}
+
+.fillStarIcon path {
+  fill: var(--primary);
+}
+
+.isEditableIcon {
+  cursor: pointer;
 }
