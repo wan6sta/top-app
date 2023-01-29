@@ -17,9 +17,7 @@ export const Layout: FC<PropsWithChildren> = props => {
   )
 }
 
-export const withLayout = <T extends Record<string, unknown>>(
-  Component: FC<T>
-) => {
+export const withLayout = <T extends Object>(Component: FC<T>) => {
   return (props: T) => (
     <Layout>
       <Component {...props} />

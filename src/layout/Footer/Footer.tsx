@@ -19,7 +19,12 @@ export const Footer: FC<FooterProps> = memo(props => {
   const mappedLinks = useMemo(
     () =>
       links.map(link => (
-        <a className={cls.link} href={link.href} target='_blank'>
+        <a
+          key={link.title}
+          className={cls.link}
+          href={link.href}
+          target='_blank'
+        >
           {link.title}
         </a>
       )),
