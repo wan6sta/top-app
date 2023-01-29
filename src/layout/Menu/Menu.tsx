@@ -8,6 +8,8 @@ import ProductsIcon from './icons/products.svg'
 import ServicesIcon from './icons/services.svg'
 import { TopLevelCategory } from '@/types/topPageModel'
 import cn from 'classnames'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const firstLevelMenu: FirstLevelMenuItem[] = [
   {
@@ -38,41 +40,57 @@ const firstLevelMenu: FirstLevelMenuItem[] = [
 
 export const Menu = memo(() => {
   const { menu, setMenu, firstCategory } = useContext(AppContext)
+  const router = useRouter()
+
+  const openSecondLevel = (secondCategoryTitle: string) => {
+    if (!setMenu) return
+
+    setMenu(menu.map(m => m._id.secondCategory === secondCategoryTitle ? {...m, isOpen: !m.isOpen} : m))
+  }
 
   const mappedMenu = useMemo(() => {
     return firstLevelMenu.map(m => {
       const isActiveMenuItem = m.id === firstCategory
       return (
-        <div
-          className={cls.menuItem}
-          key={m.route}
-        >
-          <a href={`/${m.route}`} className={cn(cls.link, {
-            [cls.activeMenuItem]: isActiveMenuItem
-          })}>
+        <div className={cls.menuItem} key={m.route}>
+          <Link
+            href={`/${m.route}`}
+            className={cn(cls.link, {
+              [cls.activeMenuItem]: isActiveMenuItem
+            })}
+          >
             {m.icon}
             <span>{m.name}</span>
-          </a>
+          </Link>
           {buildSecondLevelCategory(m)}
         </div>
       )
     })
-  }, [menu])
+  }, [menu, router.asPath])
 
   function buildSecondLevelCategory(firstLevelMenuItem: FirstLevelMenuItem) {
     return (
-     <div className={cls.secondCategoryWrapper}>
-       {menu.map(m => (
-         <div className={cls.secondCategory} key={m._id.secondCategory}>
-           <span className={cls.secondCategoryTitle}>{m._id.secondCategory}</span>
-           <div
-             className={cn(cls.secondLevelBlock, {
-               [cls.secondLevelBlockOpen]: m.isOpen
-             })}
-           >{buildThirdLevelCategory(m.pages, firstLevelMenuItem.route)}</div>
-         </div>
-       ))}
-     </div>
+      <div className={cls.secondCategoryWrapper}>
+        {menu.map(m => {
+          if (m.pages.map(p => p.alias).includes(router.asPath.split('/')[2])) {
+            m.isOpen = true
+          }
+          return (
+            <div className={cls.secondCategory} key={m._id.secondCategory}>
+            <span onClick={() => openSecondLevel(m._id.secondCategory)} className={cls.secondCategoryTitle}>
+              {m._id.secondCategory}
+            </span>
+              <div
+                className={cn(cls.secondLevelBlock, {
+                  [cls.secondLevelBlockOpen]: m.isOpen
+                })}
+              >
+                {buildThirdLevelCategory(m.pages, firstLevelMenuItem.route)}
+              </div>
+            </div>
+          )
+        })}
+      </div>
     )
   }
 
@@ -80,14 +98,14 @@ export const Menu = memo(() => {
     return (
       <div className={cls.thirdLevelCategory}>
         {pages.map(p => (
-          <a
+          <Link
             href={`/${route}/${p.alias}`}
             className={cn(cls.thirdMenuItem, {
-              [cls.thirdMenuItemActive]: false
+              [cls.thirdMenuItemActive]: `/${route}/${p.alias}` === router.asPath
             })}
           >
             {p.category}
-          </a>
+          </Link>
         ))}
       </div>
     )
