@@ -3,6 +3,7 @@ import React, { FC, PropsWithChildren } from 'react'
 import { Header } from '@/layout/Header/Header'
 import { Footer } from '@/layout/Footer/Footer'
 import { Sidebar } from '@/layout/Sidebar/Sidebar'
+import { AppContextProps, AppContextProvider } from '@/context/appContext'
 
 export const Layout: FC<PropsWithChildren> = props => {
   const { children } = props
@@ -17,10 +18,14 @@ export const Layout: FC<PropsWithChildren> = props => {
   )
 }
 
-export const withLayout = <T extends Object>(Component: FC<T>) => {
+export const withLayout = <T extends Object & AppContextProps>(
+  Component: FC<T>
+) => {
   return (props: T) => (
-    <Layout>
-      <Component {...props} />
-    </Layout>
+    <AppContextProvider menu={props.menu} firstCategory={props.firstCategory}>
+      <Layout>
+        <Component {...props} />
+      </Layout>
+    </AppContextProvider>
   )
 }
