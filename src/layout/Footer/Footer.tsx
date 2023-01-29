@@ -9,8 +9,8 @@ interface ItemLink {
 }
 
 const links: ItemLink[] = [
-  { title: 'Terms of use', href: 'https://www.google.com/' },
-  { title: 'Privacy Policy', href: 'https://www.google.com/' }
+  { title: 'Пользовательское соглашение', href: 'https://www.google.com/' },
+  { title: 'Политика конфиденциальности', href: 'https://www.google.com/' }
 ]
 
 export const Footer: FC<FooterProps> = memo(props => {
@@ -34,7 +34,7 @@ export const Footer: FC<FooterProps> = memo(props => {
   return (
     <footer className={cn(cls.Footer, className)} {...rest}>
       <span className={cls.date}>
-        Wan6sta © 2023 - {new Date().getFullYear()} All rights reserved
+        Wan6sta © 2023 - {new Date().getFullYear()} Все права защищены
       </span>
       <div className={cls.links}>{mappedLinks}</div>
     </footer>

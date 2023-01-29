@@ -1,3 +1,111 @@
 .Menu {
 
 }
+
+.firstLevelMenu {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+.menuItem {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.menuItem path {
+  fill: var(--grey-dark);
+  transition: 0.2s;
+}
+
+.activeMenuItem  {
+  color: var(--primary);
+}
+
+.activeMenuItem path {
+  fill: var(--primary);
+}
+
+.link {
+  display: flex;
+  gap: 20px;
+  transition: 0.2s;
+}
+
+.link:hover, .link:hover path {
+  color: var(--primary);
+  fill: var(--primary);
+}
+
+.secondCategoryWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding-left: 32px;
+  margin-left: 12px;
+}
+
+.secondCategoryWrapper:before {
+  content: '';
+  width: 2px;
+  height: 100%;
+  background-color: var(--grey-medium);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.secondCategory {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-bottom: 7px;
+}
+
+.secondCategoryTitle {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 16px;
+  transition: 0.2s;
+  text-transform: uppercase;
+}
+
+.secondCategoryTitle:hover {
+  color: var(--primary);
+}
+
+.secondLevelBlock {
+  /*display: none;*/
+}
+
+.secondLevelBlockOpen {
+  display: block;
+}
+
+.thirdLevelCategory {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19px;
+  gap: 10px;
+}
+
+.thirdMenuItem {
+  transition: 0.2s;
+}
+
+.thirdMenuItem:hover {
+  color: var(--primary);
+}
+
+.thirdMenuItemActive {
+  color: var(--primary);
+}

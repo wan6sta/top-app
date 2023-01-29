@@ -12,18 +12,15 @@
 .Header {
   display: none;
   grid-area: header;
-  background-color: #c2ffbb;
   height: 50px;
 }
 
 .Sidebar {
   grid-area: sidebar;
-  background-color: #759cff;
 }
 
 .MainContent {
   grid-area: main;
-  background-color: #ba75ff;
 }
 
 .Footer {
