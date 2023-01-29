@@ -2,41 +2,10 @@ import cls from './Menu.module.css'
 import { memo, useContext, useMemo } from 'react'
 import { AppContext } from '@/context/appContext'
 import { FirstLevelMenuItem, PageItem } from '@/types/menuModel'
-import CoursesIcon from './icons/courses.svg'
-import BooksIcon from './icons/books.svg'
-import ProductsIcon from './icons/products.svg'
-import ServicesIcon from './icons/services.svg'
-import { TopLevelCategory } from '@/types/topPageModel'
 import cn from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-
-const firstLevelMenu: FirstLevelMenuItem[] = [
-  {
-    route: 'courses',
-    name: 'Курсы',
-    icon: <CoursesIcon />,
-    id: TopLevelCategory.Courses
-  },
-  {
-    route: 'services',
-    name: 'Сервисы',
-    icon: <ServicesIcon />,
-    id: TopLevelCategory.Services
-  },
-  {
-    route: 'books',
-    name: 'Книги',
-    icon: <BooksIcon />,
-    id: TopLevelCategory.Books
-  },
-  {
-    route: 'products',
-    name: 'Продукты',
-    icon: <ProductsIcon />,
-    id: TopLevelCategory.Products
-  }
-]
+import {firstLevelMenu} from "@/helpers/helpers";
 
 export const Menu = memo(() => {
   const { menu, setMenu, firstCategory } = useContext(AppContext)
@@ -71,7 +40,7 @@ export const Menu = memo(() => {
   function buildSecondLevelCategory(firstLevelMenuItem: FirstLevelMenuItem) {
     return (
       <div className={cls.secondCategoryWrapper}>
-        {menu.map(m => {
+        {menu?.map(m => {
           if (m.pages.map(p => p.alias).includes(router.asPath.split('/')[2])) {
             m.isOpen = true
           }
@@ -99,6 +68,7 @@ export const Menu = memo(() => {
       <div className={cls.thirdLevelCategory}>
         {pages.map(p => (
           <Link
+            key={p._id}
             href={`/${route}/${p.alias}`}
             className={cn(cls.thirdMenuItem, {
               [cls.thirdMenuItemActive]: `/${route}/${p.alias}` === router.asPath
